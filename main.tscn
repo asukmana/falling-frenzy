@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfui7uqh740dx"]
+
+[ext_resource type="Script" uid="uid://vex65ok0xe2h" path="res://main.gd" id="1_1bvp3"]
+[ext_resource type="Texture2D" uid="uid://d1j6vykgstleo" path="res://backgroundDesert.png" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://whibhmww7dln" path="res://player.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://bwmr3l2wd44u7" path="res://mob.tscn" id="2_lquwl"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_1bvp3")
+mob_scene = ExtResource("2_lquwl")
+
+[node name="BackgroundDesert" type="Sprite2D" parent="."]
+position = Vector2(248, 360)
+scale = Vector2(0.702148, 0.702148)
+texture = ExtResource("1_ig7tw")
+
+[node name="Player" parent="." instance=ExtResource("2_0xm2m")]
+position = Vector2(248, 680)
+scale = Vector2(0.2, 0.2)
+
+[node name="MobTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="MobTimer" to="." method="_on_mob_timer_timeout"]

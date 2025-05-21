@@ -1,0 +1,73 @@
+[gd_scene load_steps=12 format=3 uid="uid://bwmr3l2wd44u7"]
+
+[ext_resource type="Texture2D" uid="uid://bavwr4tjjgwlb" path="res://ballBlack_01.png" id="1_gfurk"]
+[ext_resource type="Script" uid="uid://dfs4mmvavb6ip" path="res://mob.gd" id="1_ieysi"]
+[ext_resource type="Texture2D" uid="uid://baa51cxfmg4xi" path="res://ballBlack_03.png" id="2_ieysi"]
+[ext_resource type="Texture2D" uid="uid://nhvjwdcoeb16" path="res://ballBlue_01.png" id="3_cixyi"]
+[ext_resource type="Texture2D" uid="uid://do4gwj7jukns" path="res://ballBlue_03.png" id="4_7ulmv"]
+[ext_resource type="Texture2D" uid="uid://raew26vh2h5g" path="res://ballGrey_01.png" id="5_pcqmr"]
+[ext_resource type="Texture2D" uid="uid://p868x0hufa2w" path="res://ballGrey_03.png" id="6_jbnni"]
+[ext_resource type="Texture2D" uid="uid://0853rpqe3cqf" path="res://ballYellow_01.png" id="7_yscv0"]
+[ext_resource type="Texture2D" uid="uid://cyfpt5hrro52s" path="res://ballYellow_03.png" id="8_eqsov"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wvrms"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_gfurk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ieysi")
+}],
+"loop": true,
+"name": &"black",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_cixyi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7ulmv")
+}],
+"loop": true,
+"name": &"blue",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_pcqmr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_jbnni")
+}],
+"loop": true,
+"name": &"grey",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_yscv0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_eqsov")
+}],
+"loop": false,
+"name": &"yellow",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_h0ign"]
+radius = 64.0
+
+[node name="Mob" type="Area2D"]
+script = ExtResource("1_ieysi")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wvrms")
+animation = &"yellow"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_h0ign")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
